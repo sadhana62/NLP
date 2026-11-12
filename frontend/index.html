@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageEcho — Step Beyond the Page into Conversation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Top Canvas Meta Bar -->
+    <div class="top-meta-canvas">
+        <div class="meta-links">
+            <span class="meta-item"><span class="meta-dot"></span>PageEcho NLP Suite</span>
+            <span class="meta-item"><span class="meta-dot"></span>Local AI &amp; TF-IDF RAG</span>
+        </div>
+        <div class="meta-tagline">
+            <span>Step beyond the page into conversation</span>
+        </div>
+    </div>
+
+    <!-- Main Curved Ivory Card Container -->
+    <div class="app-container">
+        <!-- Top Navigation Header -->
+        <header class="navbar">
+            <div class="brand">
+                <h1 class="brand-name">PageEcho</h1>
+                <span class="tagline">Step beyond the page into conversation</span>
+            </div>
+
+            <div class="header-center-pill">
+                <div class="book-status-pill">
+                    <span class="status-dot idle" id="book-status-dot"></span>
+                    <span id="active-book-title">No PDF Book Uploaded</span>
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <div class="engine-switch-wrapper">
+                    <div class="segmented-engine-switch" id="engine-switch" role="radiogroup" aria-label="NLP Engine Selection">
+                        <button type="button" class="engine-btn active" id="btn-engine-llm" data-engine="llm" title="Generative LLM Mode (Ollama neural token generation)">
+                            <span class="engine-icon">⚡</span>
+                            <span class="engine-label">Generative LLM</span>
+                        </button>
+                        <button type="button" class="engine-btn" id="btn-engine-classical" data-engine="classical" title="Classical NLP Mode (Pure IR + TF-IDF Vector Space, Zero LLM)">
+                            <span class="engine-icon">🏛️</span>
+                            <span class="engine-label">Classical NLP (Zero LLM)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="model-select-wrapper" id="model-select-wrapper">
+                    <label for="model-selector">Model:</label>
+                    <select id="model-selector" class="custom-select">
+                        <option value="qwen2.5:1.5b" selected>qwen2.5:1.5b (Fast Local)</option>
+                        <option value="gemma3:latest">gemma3:latest (Deep Reasoning)</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-pill-approach" id="open-upload-modal" title="Upload PDF Book">
+                    <span>Upload PDF Book</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="main-layout">
+            <!-- Left Sidebar: Character Explorer -->
+            <aside class="character-sidebar" id="character-sidebar">
+                <div class="sidebar-header">
+                    <h2>Book Characters</h2>
+                    <span class="char-count-badge" id="char-count">0 Characters</span>
+                </div>
+                <p class="sidebar-desc" id="sidebar-desc">Upload a PDF book to extract characters and their learned story personas.</p>
+
+                <!-- No Characters Alert (Shown if no characters detected) -->
+                <div class="sidebar-non-fiction-alert hidden" id="sidebar-non-fiction-alert">
+                    <h4>No Characters Detected</h4>
+                    <p id="sidebar-non-fiction-text">No characters or key figures were found in this document.</p>
+                </div>
+
+                <div class="character-grid" id="character-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </aside>
+
+            <!-- Right Area: Interactive Chat Room -->
+            <section class="chat-section">
+                <!-- Active Character Banner -->
+                <div class="chat-header">
+                    <div class="active-char-info">
+                        <span class="active-avatar" id="active-avatar"></span>
+                        <div>
+                            <h3 id="active-char-name">No Character Selected</h3>
+                            <p class="active-char-role" id="active-char-role">Upload a PDF book with characters and select one to begin chatting</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-actions">
+                        <button class="btn-icon" id="open-comparison-btn" title="Compare Generative LLM vs Classical NLP side-by-side">
+                            <span>⚖️ Compare Engines</span>
+                        </button>
+                        <button class="btn-icon hidden" id="view-dossier-btn" title="View learned backstory, traits, and story memory">
+                            <span>Learned Dossier</span>
+                        </button>
+                        <button class="btn-icon" id="toggle-voice-btn" title="Toggle Voice Speech Output (TTS)">
+                            <span id="voice-icon">Voice off</span>
+                        </button>
+                        <button class="btn-icon" id="toggle-context-btn" title="View Retrieved Book Context (RAG)">
+                            <span>Context Inspector</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Stream (Initially hosts Welcome Hero) -->
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-banner">
+                        <span class="hero-eyebrow">LIVING LITERARY CONVERSATION &bull; DUAL NLP SUITE</span>
+                        <h1 class="hero-headline">
+                            Read the story, <span class="highlight-text">speak with characters.</span><br>
+                            The calm art of literary conversation.
+                        </h1>
+                        <p class="hero-subtext">
+                            Upload any PDF book containing characters (novels, stories, plays, biographies). The NLP engine will automatically identify the characters, learn each persona from the text, and allow you to chat with them in character.
+                        </p>
+                        <button class="btn-pill-approach hero-cta-btn" onclick="document.getElementById('open-upload-modal').click()">
+                            <span>Select &amp; Upload PDF Book</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Retrieved Context Drawer (Collapsible) -->
+                <div class="context-drawer hidden" id="context-drawer">
+                    <div class="context-drawer-header">
+                        <h4>Retrieved Book Passages (RAG Vector Context)</h4>
+                        <button class="close-btn" id="close-context-btn">&times;</button>
+                    </div>
+                    <div class="context-content" id="context-content">
+                        <p class="empty-context">No messages sent yet. Passages retrieved from the uploaded book will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Chat Input Controls -->
+                <form class="chat-input-area" id="chat-form">
+                    <div class="input-wrapper">
+                        <input type="text" id="user-input" placeholder="Upload a fictional PDF book to chat with its characters..." autocomplete="off" required disabled>
+                        <button type="submit" id="send-btn" class="send-btn" disabled>
+                            <span>Send</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- NLP & Sentiment Insights Section -->
+        <footer class="analytics-bar">
+            <div class="analytic-item">
+                <span class="analytic-label">Sentiment:</span>
+                <span class="sentiment-badge neutral" id="live-sentiment-badge">Neutral (0.0)</span>
+            </div>
+            <div class="analytic-item">
+                <span class="analytic-label">RAG Index:</span>
+                <span class="metric-val" id="indexed-chunks-val">0 Passages Indexed</span>
+            </div>
+            <div class="analytic-item">
+                <span class="analytic-label">Dialogue Engine:</span>
+                <span class="engine-pill-badge llm" id="active-engine-badge">⚡ Generative LLM</span>
+            </div>
+            <div class="analytic-item">
+                <span class="analytic-label">Book Genre:</span>
+                <span class="metric-val" id="genre-val">No Document Loaded</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Upload PDF Book Modal -->
+    <div class="modal-overlay hidden" id="upload-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Upload PDF Book</h3>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="upload-form">
+                    <div class="drop-zone" id="drop-zone">
+                        <span class="drop-icon"></span>
+                        <p>Drag & drop your <strong>PDF book</strong> here, or <strong>browse</strong></p>
+                        <span class="file-formats">Supports PDF documents (.pdf) &amp; text files (.txt)</span>
+                        <input type="file" id="file-input" accept=".pdf,.txt" hidden>
+                    </div>
+
+                    <div class="selected-file-info hidden" id="file-info">
+                        <span class="file-icon"></span>
+                        <span id="file-name">filename.pdf</span>
+                        <button type="button" class="remove-file-btn" id="remove-file-btn">&times;</button>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-upload-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submit-upload-btn">
+                            <span>Analyze Book &amp; Learn Characters</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="processing-overlay hidden" id="processing-loader">
+                    <div class="spinner"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="upload-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-meta">
+                            <span class="progress-stage" id="loader-stage-text">Preparing analysis...</span>
+                            <span class="progress-percentage" id="upload-progress-percent">0%</span>
+                        </div>
+                    </div>
+                    <p class="loader-text" id="loader-status-text">Extracting PDF text &amp; classifying book...</p>
+                    <span id="loader-subtext" style="font-size: 11px; color: var(--text-muted);">Performing NLP heuristic checks &amp; character persona extraction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learned Character Dossier Modal -->
+    <div class="modal-overlay hidden" id="dossier-modal">
+        <div class="dossier-card">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span id="dossier-avatar" style="font-size: 26px;"></span>
+                    <div>
+                        <h3 id="dossier-char-name">Character Name</h3>
+                        <span class="char-role" id="dossier-char-role">Protagonist</span>
+                    </div>
+                </div>
+                <button class="close-btn" id="close-dossier-btn">&times;</button>
+            </div>
+            <div class="dossier-body">
+                <div class="dossier-section">
+                    <h5>Story Backstory &amp; Narrative Context</h5>
+                    <p id="dossier-backstory">Backstory learned from the uploaded book text.</p>
+                </div>
+                <div class="dossier-section">
+                    <h5>Learned Personality Traits</h5>
+                    <div class="traits-list" id="dossier-traits"></div>
+                </div>
+                <div class="dossier-section">
+                    <h5>Speaking Style &amp; Cadence</h5>
+                    <p id="dossier-speech">Speech mannerisms and tone learned from character dialogue.</p>
+                </div>
+                <div class="dossier-section">
+                    <h5>Relationships in Story</h5>
+                    <p id="dossier-relationships">Dynamics with other characters from the narrative.</p>
+                </div>
+                <div class="dossier-section">
+                    <h5>Key Story Facts &amp; Memories</h5>
+                    <ul id="dossier-facts"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Engine Comparison Modal -->
+    <div class="modal-overlay hidden" id="comparison-modal">
+        <div class="comparison-modal-card">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 24px;">⚖️</span>
+                    <div>
+                        <h3>AI Dialogue Engine Comparison</h3>
+                        <span style="font-size: 11px; color: var(--text-muted);">Generative LLM vs. Classical NLP (Zero LLM) Architecture Inspector</span>
+                    </div>
+                </div>
+                <button class="close-btn" id="close-comparison-btn">&times;</button>
+            </div>
+
+            <div class="comparison-body">
+                <!-- Architectural Summary Cards -->
+                <div class="arch-summary-grid">
+                    <div class="arch-card llm">
+                        <div class="arch-card-header">
+                            <span class="arch-icon">⚡</span>
+                            <h4>Generative LLM Mode</h4>
+                        </div>
+                        <p class="arch-desc">Autoregressive Transformer with RAG Persona Ingestion</p>
+                        <ul class="arch-specs">
+                            <li><strong>Inference:</strong> Ollama Local Server (Qwen 2.5 / Gemma 3)</li>
+                            <li><strong>Pipeline:</strong> User query &rarr; TF-IDF Passage Retrieval &rarr; Injected into First-Person Persona System Prompt &rarr; Neural Token Probability Sampling.</li>
+                            <li><strong>Strengths:</strong> Fluid conversational dialogue, creative empathy, expressive literary roleplay.</li>
+                            <li><strong>Trade-offs:</strong> Requires local GPU/Ollama server; probabilistic response generation.</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-card classical">
+                        <div class="arch-card-header">
+                            <span class="arch-icon">🏛️</span>
+                            <h4>Classical NLP Mode</h4>
+                        </div>
+                        <p class="arch-desc">Information Retrieval + TF-IDF Vector Space Model + Salient Dialogue Extractor</p>
+                        <ul class="arch-specs">
+                            <li><strong>Inference:</strong> Pure Classical NLP (Zero Neural Networks / Zero LLM)</li>
+                            <li><strong>Pipeline:</strong> Regex Intent Matcher &rarr; NLTK VADER Sentiment &rarr; TF-IDF Cosine Similarity &rarr; Direct Book Dialogue Extraction &rarr; Slot-Filling Synthesis.</li>
+                            <li><strong>Strengths:</strong> Instantaneous (&lt;5ms), 100% deterministic, verbatim canonical citations, zero hallucination risk.</li>
+                            <li><strong>Trade-offs:</strong> Template-governed structure; quotes original text rather than improvising new wording.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Test Bench -->
+                <div class="comparison-testbench">
+                    <div class="testbench-header">
+                        <h5>Interactive Test Bench: Compare a Prompt on Both Engines</h5>
+                        <span class="testbench-subtitle">Run both engines simultaneously on the active character to observe the architectural difference.</span>
+                    </div>
+
+                    <div class="sample-prompts-row">
+                        <span class="sample-label">Sample queries:</span>
+                        <button type="button" class="sample-chip" data-query="Who are you and what do you do?">"Who are you?"</button>
+                        <button type="button" class="sample-chip" data-query="What advice do you have when someone feels overwhelmed?">"Advice on feeling overwhelmed"</button>
+                        <button type="button" class="sample-chip" data-query="Tell me about the central lessons and struggles in your story.">"Lessons &amp; Struggles"</button>
+                        <button type="button" class="sample-chip" data-query="What is the capital of France?">"Capital of France (Out of Domain)"</button>
+                    </div>
+
+                    <form id="compare-form" class="compare-input-row">
+                        <input type="text" id="compare-input" placeholder="Type a message or question to compare both engines side-by-side..." required>
+                        <button type="submit" id="run-compare-btn" class="btn btn-primary">
+                            <span>Run Side-by-Side Comparison</span>
+                        </button>
+                    </form>
+
+                    <!-- Comparison Results -->
+                    <div class="comparison-results hidden" id="comparison-results">
+                        <div class="comparison-output-grid">
+                            <!-- Left: Classical NLP Result -->
+                            <div class="engine-output-col classical-col">
+                                <div class="output-header">
+                                    <span class="engine-tag classical">🏛️ Classical NLP (Zero LLM)</span>
+                                    <span class="timing-tag" id="classical-score-tag">Score: --</span>
+                                </div>
+                                <div class="output-bubble" id="classical-output-bubble">...</div>
+                                <div class="output-diagnostics" id="classical-diagnostics"></div>
+                            </div>
+
+                            <!-- Right: Generative LLM Result -->
+                            <div class="engine-output-col llm-col">
+                                <div class="output-header">
+                                    <span class="engine-tag llm">⚡ Generative LLM</span>
+                                    <span class="timing-tag" id="llm-model-tag">Model: --</span>
+                                </div>
+                                <div class="output-bubble" id="llm-output-bubble">...</div>
+                                <div class="output-diagnostics" id="llm-diagnostics"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

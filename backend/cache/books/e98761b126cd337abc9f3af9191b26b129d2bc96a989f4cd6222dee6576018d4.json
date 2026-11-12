@@ -1,0 +1,94 @@
+{
+  "file_hash": "e98761b126cd337abc9f3af9191b26b129d2bc96a989f4cd6222dee6576018d4",
+  "filename": "alice_in_wonderland.txt",
+  "book_title": "Alice In Wonderland",
+  "genre": "Fantasy / Adventure",
+  "message": "Successfully identified 3 characters in 'Alice In Wonderland' (Fantasy / Adventure).",
+  "page_count": 1,
+  "word_count": 681,
+  "indexed_chunks": 7,
+  "characters": [
+    {
+      "name": "Alice",
+      "role": "Protagonist",
+      "traits": [
+        "Curious",
+        "Resilient",
+        "Introspective"
+      ],
+      "speech_style": "Speaks with quiet intelligence and raw honesty.",
+      "story_backstory": "A central figure exploring the paths and choices of life.",
+      "relationships": "Guided by their mentor; closely connected to companion figures.",
+      "learned_facts": [
+        "Faced pivotal decisions in the story",
+        "Engaged in transformative dialogue"
+      ],
+      "initial_greeting": "Greetings, my friend. I am Alice. Speak with me—what thoughts or burdens bring you to converse today?"
+    },
+    {
+      "name": "March Hare",
+      "role": "Companion",
+      "traits": [
+        "Jovial",
+        "Sociable",
+        "Lighthearted"
+      ],
+      "speech_style": "Speaks with a lighthearted and somewhat eccentric tone.",
+      "story_backstory": "A central figure exploring the paths and choices of life.",
+      "relationships": "Guided by their mentor; closely connected to companion figures.",
+      "learned_facts": [
+        "Engaged in transformative dialogue",
+        "Participated in a pivotal decision"
+      ],
+      "initial_greeting": "Greetings, my friend. I am March Hare. Speak with me—what thoughts or burdens bring you to converse today?"
+    },
+    {
+      "name": "The Hatter",
+      "role": "Companion",
+      "traits": [
+        "Mad",
+        "Seductive",
+        "Curious"
+      ],
+      "speech_style": "Speaks with a whimsical and sometimes unsettling tone.",
+      "story_backstory": "A central figure exploring the paths and choices of life.",
+      "relationships": "Guided by their mentor; closely connected to companion figures.",
+      "learned_facts": [
+        "Participated in a pivotal decision",
+        "Engaged in transformative dialogue"
+      ],
+      "initial_greeting": "Greetings, my friend. I am The Hatter. Speak with me—what thoughts or burdens bring you to converse today?"
+    }
+  ],
+  "cleaned_text": "CHAPTER I. Down the Rabbit-Hole\n\nAlice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'\n\nSo she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.\n\nThere was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.\n\nCHAPTER II. The Pool of Tears\n\n'Curiouser and curiouser!' cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); 'now I'm opening out like the largest telescope that ever was! Good-bye, feet!' (when she looked down at her feet, they seemed to be almost out of sight, they were getting so far off). 'Oh, my poor little feet, I wonder who will put on your shoes and stockings for you now, dears? I'm sure I shan't be able!'\n\nCHAPTER III. A Caucus-Race and a Long Tale\n\nThey were indeed a queer-looking party that assembled on the bank -- the birds with draggled feathers, the animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.\n\nThe first question of course was, how to get dry again: they had a consultation about this, and after a few minutes it seemed quite natural to Alice to find herself talking familiarly with them, as if she had known them all her life. Indeed, she had quite a long argument with the Lory, who at last turned sulky, and would only say, 'I am older than you, and must know better'; and this Alice would not admit without knowing how old it was, and as the Lory positively refused to tell its age, there was no more to be said.\n\nCHAPTER VII. A Mad Tea-Party\n\nThere was a table set out under a tree in front of the house, and the March Hare and the Hatter were having tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their elbows on it, and talking over its head. 'Very uncomfortable for the Dormouse,' thought Alice; 'only, as it's asleep, I suppose it doesn't mind.'\n\nThe table was a large one, but the three were all crowded together at one corner of it: 'No room! No room!' they cried out when they saw Alice coming. 'There's PLENTY of room!' said Alice indignantly, and she sat down in a large arm-chair at one end of the table.\n\n'Have some wine,' the March Hare said in an encouraging tone.\nAlice looked all round the table, but there was nothing on it but tea. 'I don't see any wine,' she remarked.\n'There isn't any,' said the March Hare.\n'Then it wasn't very civil of you to offer it,' said Alice angrily.\n'It wasn't very civil of you to sit down without being invited,' said the March Hare.",
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "text": "CHAPTER I. Down the Rabbit-Hole\n\nAlice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'\n\nSo she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her."
+    },
+    {
+      "chunk_id": 1,
+      "text": "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.\n\nThere was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
+    },
+    {
+      "chunk_id": 2,
+      "text": "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.\n\nCHAPTER II. The Pool of Tears"
+    },
+    {
+      "chunk_id": 3,
+      "text": "CHAPTER II. The Pool of Tears\n\n'Curiouser and curiouser!' cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); 'now I'm opening out like the largest telescope that ever was! Good-bye, feet!' (when she looked down at her feet, they seemed to be almost out of sight, they were getting so far off). 'Oh, my poor little feet, I wonder who will put on your shoes and stockings for you now, dears? I'm sure I shan't be able!'\n\nCHAPTER III. A Caucus-Race and a Long Tale\n\nThey were indeed a queer-looking party that assembled on the bank -- the birds with draggled feathers, the animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable."
+    },
+    {
+      "chunk_id": 4,
+      "text": "They were indeed a queer-looking party that assembled on the bank -- the birds with draggled feathers, the animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.\n\nThe first question of course was, how to get dry again: they had a consultation about this, and after a few minutes it seemed quite natural to Alice to find herself talking familiarly with them, as if she had known them all her life. Indeed, she had quite a long argument with the Lory, who at last turned sulky, and would only say, 'I am older than you, and must know better'; and this Alice would not admit without knowing how old it was, and as the Lory positively refused to tell its age, there was no more to be said.\n\nCHAPTER VII. A Mad Tea-Party"
+    },
+    {
+      "chunk_id": 5,
+      "text": "CHAPTER VII. A Mad Tea-Party\n\nThere was a table set out under a tree in front of the house, and the March Hare and the Hatter were having tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their elbows on it, and talking over its head. 'Very uncomfortable for the Dormouse,' thought Alice; 'only, as it's asleep, I suppose it doesn't mind.'\n\nThe table was a large one, but the three were all crowded together at one corner of it: 'No room! No room!' they cried out when they saw Alice coming. 'There's PLENTY of room!' said Alice indignantly, and she sat down in a large arm-chair at one end of the table."
+    },
+    {
+      "chunk_id": 6,
+      "text": "The table was a large one, but the three were all crowded together at one corner of it: 'No room! No room!' they cried out when they saw Alice coming. 'There's PLENTY of room!' said Alice indignantly, and she sat down in a large arm-chair at one end of the table.\n\n'Have some wine,' the March Hare said in an encouraging tone.\nAlice looked all round the table, but there was nothing on it but tea. 'I don't see any wine,' she remarked.\n'There isn't any,' said the March Hare.\n'Then it wasn't very civil of you to offer it,' said Alice angrily.\n'It wasn't very civil of you to sit down without being invited,' said the March Hare."
+    }
+  ]
+}
